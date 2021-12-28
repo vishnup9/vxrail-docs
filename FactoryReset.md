@@ -33,11 +33,17 @@ This procedure requires the node to be power-cycled. If this RASR image upgrade 
 ## Upgrade the RASR image on the node using ISO
 
 1. In a Windows client, open iDRAC web UI and launch virtual console.
+![Figure 1](./images/pic4.png)
 2. In the Virtual Console window, click Virtual Media tab and select Connect Virtual Media.
-3. Click Next Boot and select Virtual CD/DVD/ISO.
-4. Click Power and select Reset System (warm boot).The system will boot to the RASR Update Utility menu.
-5. Type R to select RASR Reset, and then type Y to continue.
-6. The RASR Reset process begins. Monitor the progress until completion. This portion of the process will take approximately 30 minutes.
+![Figure 1](./images/pic5.png)
+4. Click Next Boot and select Virtual CD/DVD/ISO.
+![Figure 1](./images/pic6.png)
+6. Click Power and select Reset System (warm boot).The system will boot to the RASR Update Utility menu.
+![Figure 1](./images/pic7.png)
+8. Type R to select RASR Reset, and then type Y to continue.
+![Figure 1](./images/pic8.png)
+10. The RASR Reset process begins. Monitor the progress until completion. This portion of the process will take approximately 30 minutes.
+![Figure 1](./images/pic9.png)
 
 ## Install the Dell Upgrade Packages (DUPs) from SD
 
