@@ -51,6 +51,7 @@ This procedure requires the node to be power-cycled. If this RASR image upgrade 
 1. After completing RASR reset through ISO, disconnect virtual media by selecting Virtual Media then Disconnect Virtual Media.
 
 ![Figure 1](./images/pic11.png)
+
 2. From the RASR Main menu, Type Q to quit and Y to reboot.
 
 ![Figure 1](./images/pic12.png)
@@ -91,9 +92,13 @@ This procedure requires the node to be power-cycled. If this RASR image upgrade 
 ## Factory Reset from SD
 
 1. The system will boot to the RASR Update Utility menu.Type F to do Factory Reset and type Y to continue
+
 ![Figure 1](./images/pic21.png)
+
 3. Ensure all external storage devices are disconnected correctly to prevent the potential risks of data corruption. If yes, type Disconnected to continue. Press any key to exit Factory Reset.
+
 ![Figure 1](./images/pic22.png)
+
 5. Factory Reset completes and displays message “Factory install Prototype (FIP) successfully completed”. Press Enter to continue and return to RASR Update Utility menu.
 ![Figure 1](./images/pic23.png)
 7. Enter Q to quit and Yes to reboot the system
