@@ -40,10 +40,11 @@ This procedure requires the node to be power-cycled. If this RASR image upgrade 
 ![Figure 1](./images/pic6.png)
 6. Click Power and select Reset System (warm boot).The system will boot to the RASR Update Utility menu.
 ![Figure 1](./images/pic7.png)
-8. Type R to select RASR Reset, and then type Y to continue.
 ![Figure 1](./images/pic8.png)
-10. The RASR Reset process begins. Monitor the progress until completion. This portion of the process will take approximately 30 minutes.
+8. Type R to select RASR Reset, and then type Y to continue.
 ![Figure 1](./images/pic9.png)
+10. The RASR Reset process begins. Monitor the progress until completion. This portion of the process will take approximately 30 minutes.
+![Figure 1](./images/pic10.png)
 
 ## Install the Dell Upgrade Packages (DUPs) from SD
 
