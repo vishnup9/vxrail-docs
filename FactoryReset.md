@@ -53,12 +53,10 @@ This procedure requires the node to be power-cycled. If this RASR image upgrade 
 2. From the RASR Main menu, Type Q to quit and Y to reboot.
 ![Figure 1](./images/pic12.png)
 3. During boot, press F11 to enter Boot Manager.
-
 ![Figure 1](./images/pic13.png)
 4. Select One-shot UEFI Boot Menu.
 ![Figure 1](./images/pic14.png)
 5. Select Internal SD: RASRTOOL.
-
 ![Figure 1](./images/pic15.png)
 6. System will reboot to start RASR.
 
