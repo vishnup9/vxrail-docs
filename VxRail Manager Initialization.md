@@ -31,7 +31,7 @@ This procedure is covered by chapter 'VxRail 4.7 Nodes' in [DPC.Next ESXi Refres
 1. When all VxRail nodes are already reset to factory settings (procedure described in chapter 'VxRail 4.7 Nodes' in [DPC.Next ESXi Refreshing procedure](https://msdevopsconfluence.fsc.atos-services.net/pages/viewpage.action?spaceKey=DPC&title=DPC.Next+ESXi+refreshing#DPC.NextESXirefreshing-VxRail4.7Nodes).), open iDRAC console on the first host of the new VxRail cluster;
 2. In DCUI press F2 and provide ESXI root credentials when prompted (default root's password is 'Passw0rd!'). Enter 'Troubleshooting Options' and Enable the ESXi Shell. Press alt+F1 to switch to prompt.
 ![Figure 1](./images/pic1.png)
-3. List and set MGMT VLAN Id for 'Management Network', 'VM Network', 'Private Management Network' and 'Privae VM Network' typing below commands one by one, replacing 'MgmtVLAN' by proper VLAN Id:
+3. List and set MGMT VLAN Id for 'Management Network', 'VM Network' and VxRail Discovery vLAN Id for 'Private Management Network' and 'Private VM Network' typing below commands one by one, replacing 'MgmtVLAN' by proper VLAN Id:
 
  ```bash
   esxcli network vswitch standard portgroup list
@@ -42,7 +42,7 @@ This procedure is covered by chapter 'VxRail 4.7 Nodes' in [DPC.Next ESXi Refres
   
   esxcli network vswitch standard portgroup set –p "Private Management Network" –v "2899"
   
-  esxcli network vswitch standard portgroup set –p "Privae VM Network" –v "2899"
+  esxcli network vswitch standard portgroup set –p "Private VM Network" –v "2899"
 ```
 
 4. Set the VxRail Manager VM IP typing below command (replace IP address, netmask and gateway with proper ones):
@@ -70,7 +70,11 @@ This procedure is covered by chapter 'VxRail 4.7 Nodes' in [DPC.Next ESXi Refres
 7. Restart VxRail Manager vm:
 
 ```bash
-  vim-cmd vmsvc/power.off 'vmid'
+  vim-cmd vmsvc/getallvms
   
-  vim-cmd vmsvc/power.on 'vmid'
+  vim-cmd vmsvc/power.shutdown "1"
+  
+  vim-cmd vmsvc/power.getstate "1"
+  
+  vim-cmd vmsvc/power.on "1"
 ```
