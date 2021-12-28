@@ -7,7 +7,7 @@
   
 | Version | Date       | Description              | Author       |
 | ------- | ---------- | ------------------------ | --------------- |
-| 0.1     | 31/03/2020 | First version | Maciej Losek |
+| 0.1     | 28/12/2021 | First version | Rohit Singh |
 
 # Introduction
 
