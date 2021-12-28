@@ -13,7 +13,7 @@
 
 ## Purpose
 
-The purpose of this document is to describe steps that should be performed to to factory reset the Vxrail nodes.
+The purpose of this document is to describe steps that should be performed to factory reset the Vxrail nodes.
 
 ## Scope
 
