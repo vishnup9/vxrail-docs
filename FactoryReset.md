@@ -66,7 +66,7 @@ This procedure requires the node to be power-cycled. If this RASR image upgrade 
 ![Figure 1](./images/pic18.png)
 9. Type U to select Upgrade from the Support menu and press Enter.
 ![Figure 1](./images/pic19.png)
-10. Type R to select Rolling DUP(s) Upgrade and press Enter.The DUP upgrades will begin. The system will automatically reboot after each DUP is installed.The DUP upgrades will begin. The system will automatically reboot after each DUP is installed.
+10. Type R to select Rolling DUP(s) Upgrade and press Enter.The DUP upgrades will begin. The system will automatically reboot after each DUP is installed.The DUP upgrades will begin. The system will automatically reboot after each DUP is installed.\
 ![Figure 1](./images/pic20.png)
 
 ## Factory Reset from SD
