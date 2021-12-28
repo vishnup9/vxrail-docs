@@ -32,11 +32,11 @@ In the document below, we have detailed steps mentioned to perform the factory r
 
 This procedure describes the steps to upgrade the RASR image on VxRail Dell appliance (node) to the VxRail 7.0.241 release version. This procedure requires the node to be power-cycled. If this RASR image upgrade is run on a currently running cluster, the cluster might be impacted. This procedure contains the following steps:
 
-\1. Upgrade the RASR image on the node using ISO. 
+1. Upgrade the RASR image on the node using ISO. 
 
-\2. Install the Dell Upgrade Packages (DUPs) from SD. 
+2. Install the Dell Upgrade Packages (DUPs) from SD. 
 
-\3. Factory Reset from SD.
+3. Factory Reset from SD.
 
 
 
