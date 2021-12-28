@@ -58,4 +58,4 @@ This procedure requires the node to be power-cycled. If this RASR image upgrade 
 2. Ensure all external storage devices are disconnected correctly to prevent the potential risks of data corruption. If yes, type Disconnected to continue. Press any key to exit Factory Reset.
 3. Factory Reset completes and displays message “Factory install Prototype (FIP) successfully completed”. Press Enter to continue and return to RASR Update Utility menu.
 4. Enter Q to quit and Yes to reboot the system
-5. Once installation is completed completed message will pop post reboot as shown in the image.
+5. Once installation is completed completed message will pop post reboot.
