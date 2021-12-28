@@ -45,13 +45,13 @@ This procedure is covered by chapter 'VxRail 4.7 Nodes' in [DPC.Next ESXi Refres
   esxcli network vswitch standard portgroup set –p "Private VM Network" –v "2899"
 ```
 
+![Figure 2](./images/pic2.png)
+
 4. Set the VxRail Manager VM IP typing below command (replace IP address, netmask and gateway with proper ones):
 
 ```bash
   vxrail-primary --setup --vxrail-address 172.22.128.14 --vxrail-netmask 255.255.255.0 --vxrail-gateway 172.22.128.1 --no-roll-back --verbose
 ```
-
-![Figure 2](../design/images/dhcVxRailInstallationProcedure/0.png)
 
 5. When VxRail Manager has been deployed successfully, it has to be restarted. First list all vms and note 'vmid' for VxRail Manager:
 
