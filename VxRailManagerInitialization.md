@@ -59,7 +59,7 @@ This procedure is covered by chapter 'VxRail 4.7 Nodes' in [DPC.Next ESXi Refres
   vim-cmd vmsvc/getallvms
 ```
 
-![Figure 2](../design/images/dhcVxRailInstallationProcedure/4.png)
+![Figure 2](../images/pic3.png)
 
 6. Run command to check vm state, replacing 'vmid' with proper one :
 
