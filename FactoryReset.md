@@ -100,8 +100,14 @@ This procedure requires the node to be power-cycled. If this RASR image upgrade 
 ![Figure 1](./images/pic22.png)
 
 5. Factory Reset completes and displays message “Factory install Prototype (FIP) successfully completed”. Press Enter to continue and return to RASR Update Utility menu.
+
 ![Figure 1](./images/pic23.png)
+
 7. Enter Q to quit and Yes to reboot the system
+
 ![Figure 1](./images/pic24.png)
+
 9. Once installation is completed completed message will pop post reboot.
+
 ![Figure 1](./images/pic25.png)
+
