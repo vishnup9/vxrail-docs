@@ -31,7 +31,7 @@ This procedure is covered by chapter 'VxRail 4.7 Nodes' in [DPC.Next ESXi Refres
 1. When all VxRail nodes are already reset to factory settings (procedure described in chapter 'VxRail 4.7 Nodes' in [DPC.Next ESXi Refreshing procedure](https://msdevopsconfluence.fsc.atos-services.net/pages/viewpage.action?spaceKey=DPC&title=DPC.Next+ESXi+refreshing#DPC.NextESXirefreshing-VxRail4.7Nodes).), open iDRAC console on the first host of the new VxRail cluster;
 2. In DCUI press F2 and provide ESXI root credentials when prompted (default root's password is 'Passw0rd!'). Enter 'Troubleshooting Options' and Enable the ESXi Shell. Press alt+F1 to switch to prompt.
 ![Figure 1](./images/pic1.png)
-3. List and set MGMT VLAN Id for 'Management Network', 'VM Network' and VxRail Discovery vLAN Id for 'Private Management Network', 'Private VM Network' typing below commands one by one, replacing 'MgmtVLAN' by proper VLAN Id:
+3. List and set MGMT VLAN Id for 'Management Network', 'VM Network' and VxRail Discovery vLAN Id for 'Private Management Network', 'Private VM Network' typing below commands one by one by proper VLAN Id:
 
  ```bash
   esxcli network vswitch standard portgroup list
@@ -77,4 +77,6 @@ This procedure is covered by chapter 'VxRail 4.7 Nodes' in [DPC.Next ESXi Refres
   vim-cmd vmsvc/power.getstate "1"
   
   vim-cmd vmsvc/power.on "1"
+  
+  vim-cmd vmsvc/power.getstate "1"
 ```
