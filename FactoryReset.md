@@ -53,16 +53,20 @@ This procedure requires the node to be power-cycled. If this RASR image upgrade 
 2. From the RASR Main menu, Type Q to quit and Y to reboot.
 ![Figure 1](./images/pic12.png)
 3. During boot, press F11 to enter Boot Manager.
+
 ![Figure 1](./images/pic13.png)
 4. Select One-shot UEFI Boot Menu.
 ![Figure 1](./images/pic14.png)
 5. Select Internal SD: RASRTOOL.
+
 ![Figure 1](./images/pic15.png)
 6. System will reboot to start RASR.
+
 ![Figure 1](./images/pic16.png)
 7. At the VxRail RASR Menu, type 99 then press Enter. The VxRail RASR Support Menu will open
 ![Figure 1](./images/pic17.png)
 8. Type I to select Install (DUP(s) and press Enter.The system will be scanned to determine compatible DUPs. See next screen. Firmware version and list might be different per platform.
+
 ![Figure 1](./images/pic18.png)
 9. Type U to select Upgrade from the Support menu and press Enter.
 ![Figure 1](./images/pic19.png)
