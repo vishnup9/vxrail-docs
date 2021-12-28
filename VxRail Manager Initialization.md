@@ -47,7 +47,7 @@ This procedure describes the steps to upgrade the RASR image on VxRail Dell appl
 
 |Sub-Step|Action|Screenshot|
 | :- | :- | :- |
-|**1.**|In a Windows client, open iDRAC web UI and launch virtual console.|<p></p><p></p><p></p>|
+|**1.**|In a Windows client, open iDRAC web UI and launch virtual console.|images/pic1.png<p></p><p></p><p></p>|
 |**2.**|In the Virtual Console window, click Virtual Media tab and select Connect Virtual Media.|<p></p><p></p><p></p><p></p><p></p>|
 |**3.**|<p></p><p>Click Next Boot and select Virtual CD/DVD/ISO</p>|<p></p><p></p><p></p>|
 |**4.**|<p>Click Power and select Reset System (warm boot).</p><p>The system will boot to the RASR Update Utility menu.</p>|<p></p><p></p><p></p><p></p>|
