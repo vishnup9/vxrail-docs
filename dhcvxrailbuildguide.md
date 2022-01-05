@@ -35,20 +35,31 @@ The following resource repositories store ansible scripts (playbooks, and roles)
 2. Integration Architect creates service account in Atos and VMware systems.
 3. Integration Architect executes creation of prerequisite VM task on VMware Console. The Prerequisite VM is required during the VxRail BringUp, SDDC Bring UP, vCF on VxRail BringUp as it provides initial DNS, DHCP, NTP services as well as orchestrates non-VCF components build up. 
 4. Integration architect shares prerequisite VM OVA with deployment team.
-5. Deployment team downloads prerequisite VM OVA. CloudBuilder OVA to be downloaded and stored on prerequisite VM binaries location. The prerequisite VM OVA is imported to workstation. 
+5. Deployment team downloads prerequisite VM OVA, CloudBuilder OVA to be downloaded and stored on prerequisite VM binaries location. The prerequisite VM OVA is imported to workstation. 
 6. Deployment team connects laptop with VMware Workstation that runs prereqVM to DHC switches (management network).
 7. Verify VxRail nodes are racked, nodes powered ON. Cabling and network configuraiton done. Nodes should be accessible over iDRAC.
 8. Download VxRail 7.0.241 code from DellEMC.
-9. RASR & Factory reset of nodes for clean installation. DUP updates.
-10. VxRail manager initialization for management cluster .
-11. Perform post VxRail bring-up steps
-12. Deployment team runs ansible roles for cloudbuilder deployment and to perform vCF bringup on VxRail.
-14. Deployment team performs Post vCF VxRail bring-up procedures
-15. DHC stage 1 deployment.
-16. VxRail manager initialization for workload domain
-17. Workload domain creation in SDDC
-18. Add VxRail clsuter to workload domain in SDDC
-19. Run DHC stage 2 instlaltion
+9. Upgrade the RASR image on the node using ISO, Install the Dell Upgrade Packages (DUPs) from SD and Factory Reset from SD.
+10. Run playbook for VxRail manager initialization for management cluster.
+11. Run playbook to generate input json file for vxrail bringup.
+12. Run playbook for VxRail bring-up process.
+13. Run playbook to perform Pre-Vcf Bringup task(Rename Vcenter components, Create VSAN Policy, Create SDDC management portgroup).
+14. Run playbook for importing cloudbuilder vm on Vcenter.
+15. Run playbook to generate json input file for vcf on vxrail bringup.
+16. Run playbook to perform vcf on vxrail bringup.
+17. Run playbook for post vCF VxRail bring-up procedures
+18. DHC stage 1 deployment.
+19. Run playbook to generate input json file for creating workload domain.
+20. Run playbook for Workload domain creation in SDDC.
+21. Run playbook for VxRail manager initialization for workload domain.
+22. Run playbook to generate input json file for Vxrail Bringup for workload domain
+23. Run playbook for VxRail bringup for workload domain using above generated input file.
+24. Run playbook to perform post Vxrail bringup for workload domain task that is Renaming vcenter components(vsan, datacenter, cluster, dv switch), adding portgroups and adding vxadmin user.
+25. Runing playbook for getting esxi thumbprint and adding it into defaults/main.yml file for the playbook createVxRailClusterInWorkloadDomainBringupFile.yml.
+26. Run playbook to collect portgroup(management,vmotion,vsan) details for workload vcenter and add it in the j2 for playbook createVxRailClusterInWorkloadDomainBringupFile.yml
+27. Run playbook to generate the json file for adding VxRail cluster to workload domain 
+28. Run playbook for adding VxRail cluster to workload domain in SDDC.
+29. Run DHC stage 2 installation.
 
 
 
@@ -139,6 +150,8 @@ The Prerequisite VM is generated with each DHC deployment.  The parameters below
 | externalProxyPassword  |   test  |   password  used  by  Parent  Proxy  for  authentication,  default  value  test  (Web  Proxy  for  Grenoble  Environment  is  not  requiring  authentication)notice:  please  be  aware  that  in  this  version  of  Code  Stream  all  variables  need  to  be  filled,  this  mean  even  if  "direct"  access  is  chosen  or  "none"  for  authentication  method  is  chosen,  this  variable  need  to  be  filled  with  random  value |
 | externalProxyPort  |   8080  |   TCP  port  that  Parent  Proxy  for  DPC  Proxy  will  listen  for  web  traffic,  default  value  8080  (Web  Proxy  for  Grenoble  Environment  port)notice:  please  be  aware  that  in  this  version  of  Code  Stream  all  variables  need  to  be  filled,  this  mean  even  if  "direct"  access  is  chosen,  this  variable  need  to  be  filled  with  random  value |
 | networkDiscovery.vlan  |   2899  |   VXRAILDISCOVERY vLAN is used during VxRail bringup process and VxRail appliance uses this discovery vLAN |
+| dellUser  |   dl-dhc-vxrail@atos.net  |   Dell service account user name used for LCM activities |
+| dellUserPassword  |   Dell service account user password  |   Dell service account user password |
 
 ### Licenses
 
@@ -176,7 +189,7 @@ The Prerequisite VM is generated with each DHC deployment.  The parameters below
 
 | Field description<br>*Input  Parameter name*  | example  for  DEV  nx1  env  | Description |
 | ------ | ------ | ------ |
-| *numberOfComputeHostsInWorkloadDomain* | 3 | Define amount of hosts in workload domains |
+| *numberOfComputeHostsInWorkloadDomain* | 4 | Define amount of hosts in workload domains |
 | 1st vmnicId<br>*vmnic1Id* | | Provide compute host management 1st network adapter ID physically connected to DHC top of rack switch. Expected single digit value.|
 | 2nd vmnicId<br>*vmnic2Id* | | Provide compute host management 2nd network adapter ID physically connected to DHC top of rack switch. Expected single digit value.|
 
@@ -218,30 +231,30 @@ Ensure at this stage that all parameters meet DHC design specification
 | Field description<br>*Input  Parameter name*  | example  for  DEV  nx1  env  | Description |
 | ------ | ------ | ------ |
 |<br>**|||
-| Edge network<br>*networkEdgeCidr* | 192.168.127 | Edge Transport Node Network first three octets |
+| Edge network<br>*networkEdgeCidr* | 172.22.132 | Edge Transport Node Network first three octets |
 | Edge network Gateway<br>*networkEdgeGateway* | 1 | Edge Transport Node Network Gateway last octet |
 | Edge network Netmask<br>*networkEdgeNetmask* | 255.255.255.0 | Edge Transport Node Network Netmask |
-| Edge network Vlan<br>*networkEdgeVlan* | 27 | Edge Transport Node Network Vlan Id |
-| Mgmt network<br>*networkMgmtCidr*  |   192.168.120  | Management Network first three octets |
+| Edge network Vlan<br>*networkEdgeVlan* | 2804 | Edge Transport Node Network Vlan Id |
+| Mgmt network<br>*networkMgmtCidr*  |   172.22.128  | Management Network first three octets |
 | Mgmt network Gateway<br>*networkMgmtGateway*  |   1  | Management Network Gateway |
 | Mgmt network Netmask<br>*networkMgmtNetmask*  |   255.255.255.0  | Management Network netmask |
-| Mgmt network Vlan<br>*networkMgmtVlan*  |   120  | Management Network VLAN id |
-| Vmotion network<br>*networkVmotionCidr*  |   192.168.122  | vMotion Network first three octets |
+| Mgmt network Vlan<br>*networkMgmtVlan*  |   2800  | Management Network VLAN id |
+| Vmotion network<br>*networkVmotionCidr*  |   172.22.130  | vMotion Network first three octets |
 | Vmotion network Gateway<br>*networkVmotionGateway*  |   1  | vMotion gateway |
 | Vmotion network Netmask<br>*networkVmotionNetmask*  |   255.255.255.0  | vMotion netmask  |
-| Vmotion network Vlan<br>*networkVmotionVlan*  |   22  |  |
-| VSAN network<br>*networkVsanCidr*  |   192.168.123  | VSAN Network first three octets |
+| Vmotion network Vlan<br>*networkVmotionVlan*  |   2802  |  |
+| VSAN network<br>*networkVsanCidr*  |   172.22.131  | VSAN Network first three octets |
 | VSAN network Gateway<br>*networkVsanGateway*  |   1  |  |
 | VSAN network Netmask<br>*networkVsanNetmask*  |   255.255.255.0  |  |
-| VSAN network Vlan<br>*networkVsanVlan*  |   23  |  |
-| Vxlan network<br>*networkVxlanCidr*  |   192.168.121  | VXLAN Network first three octets |
+| VSAN network Vlan<br>*networkVsanVlan*  |   2803  |  |
+| Vxlan network<br>*networkVxlanCidr*  |   172.22.129  | VXLAN Network first three octets |
 | Vxlan network Gateway<br>*networkVxlanGw*  |   1  |  |
-| Vxlan network Vlan<br>*networkVxlanVlan*  |   21  |  |
-| Avn Local Region network<br>*networkAvnLocalRegionCidr* | 172.22.30 | CF 4.x AVN Local Region network address - !! first three octects only !! |
+| Vxlan network Vlan<br>*networkVxlanVlan*  |   2801  |  |
+| Avn Local Region network<br>*networkAvnLocalRegionCidr* | 172.22.135 | CF 4.x AVN Local Region network address - !! first three octects only !! |
 | <br>*networkAvnLocalRegionNetmask* | | CF 4.x AVN Local Region network mask |
 |Avn Local Region Gw<br>*networkAvnLocalRegionGw*|1|vCF 4.x AVN Local Region Gateway !! last octet only !! example: 1|
 |Avn Cross Region Name<br>*networkAvnCrossRegionName*|xreg-m01-seg01|Application Virtual Network Cross Region Name. The name must match with the value in the VCF bring-up input file|
-| Avn Cross Region network<br>*networkAvnCrossRegionCidr* | 172.22.31 | vCF 4.x AVN CrossRegion network address !! first three octets only !!|
+| Avn Cross Region network<br>*networkAvnCrossRegionCidr* | 172.22.136 | vCF 4.x AVN CrossRegion network address !! first three octets only !!|
 | Avn Cross Region Netmask<br>*networkAvnCrossRegionNetmask* | | vCF 4.x AVN CrossRegion network mask |
 | Avn Cross Region Gw<br>*networkAvnCrossRegionGw*|1|vCF 4.x AVN CrossRegion gateway !! only last octet !! example: 1|
 | Avn Uplink1 network<br>*networkAvnUplink1Cidr* | 172.16.42 | vCF 4.x uplink1 to T0 network address !! only first three octets !! |
