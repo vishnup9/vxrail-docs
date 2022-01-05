@@ -228,7 +228,7 @@ The Prerequisite VM is generated with each DHC deployment.  The parameters below
 
 Ensure at this stage that all parameters meet DHC design specifications and check with NDCS to ensure DC LAN supportability.
 
-| Field description<br>*Input  Parameter name*  | example  for  DEV  nx1  env  | Description |
+| Field description<br>*Input  Parameter name*  | example  for  DEV  nx8  env  | Description |
 | ------ | ------ | ------ |
 |<br>**|||
 | Edge network<br>*networkEdgeCidr* | 172.22.132 | Edge Transport Node Network first three octets |
@@ -443,9 +443,9 @@ Go to *Administration>Licenses>Add New Licenses*, enter license keys one per lin
 | root | `< temporaryCredentials.password >` | **vCenter Server Virtual Appliances** - root account |
 | root | `< temporaryCredentials.password >` | **VxRail Server Virtual Appliances** - root account |
 | mystic | `< temporaryCredentials.password >` | **VxRail Server Service account** - mystic account |
-| root| `< temporaryCredentials.password >< temporaryCredentials.password >`| **NSX-T** Virtual Appliance Root Account - NSX-T Manager and Edge Nodes <br> doubled password expected!|
-| admin | `< temporaryCredentials.password >< temporaryCredentials.password >` | **NSX-T** User Interface and Default CLI Admin Account - NSX-T Manager and Edge Nodes <br> doubled password expected! |
-| admin | `< temporaryCredentials.password >< temporaryCredentials.password >` | **NSX-T** Audit CLI Account - NSX-T Manager and Edge Nodes <br> doubled password expected! |
+| root| `< temporaryCredentials.password >`| **NSX-T** Virtual Appliance Root Account - NSX-T Manager and Edge Nodes <br> doubled password expected!|
+| admin | `< temporaryCredentials.password >` | **NSX-T** User Interface and Default CLI Admin Account - NSX-T Manager and Edge Nodes <br> doubled password expected! |
+| admin | `< temporaryCredentials.password >` | **NSX-T** Audit CLI Account - NSX-T Manager and Edge Nodes <br> doubled password expected! |
 | root | `< temporaryCredentials.password >` | **SDDC Manager** Appliance Root Account |
 | vcf | `< temporaryCredentials.password >` | **SDDC Manager** Super User |
 | admin | `< temporaryCredentials.password >` | **SDDC Manager** REST API User |
@@ -454,7 +454,7 @@ Go to *Administration>Licenses>Add New Licenses*, enter license keys one per lin
 
 ### excel file - Hosts and Networks Tab
 
-| |Management Domain Networks| | || |
+ ###Management Domain Networks
 |-----| ------ | ------ | ------ |------ |------ |
 |Network Type| VLAN# | Portgroup Name | CIDR Notation |Gateway|MTU|
 |Management Network| `< networkMgmt.vlan >` | SDDC-DPortGroup-Mgmt| `< networkMgmt.cidr >.0/24` | `< networkMgmt.cidr >.1` | `1500` |
@@ -468,7 +468,7 @@ Go to *Administration>Licenses>Add New Licenses*, enter license keys one per lin
 >Note: in vcf 4.3 network VxLAN is representing Overlay network for Hosts. Edge network is representing Overlay network for Edges.
 >Note: We will have to revisit this document after DHC 1.5 is released and all references changed to vCF 4.3.x
 
-| Management Domain ESXI Hosts | | |  |
+ ###Management Domain ESXI Hosts
 | ------ | ------ | ------ |------ |
 | `< locationCode >mgt001` | `< locationCode >mgt002` |  `< locationCode >mgt003` | `< locationCode >mgt004` |
 | `< networkMgmt.cidr >.101`| `< networkMgmt.cidr >.102` | `< networkMgmt.cidr >.103` | `< networkMgmt.cidr >.104`|
