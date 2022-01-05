@@ -454,7 +454,7 @@ Go to *Administration>Licenses>Add New Licenses*, enter license keys one per lin
 
 ### excel file - Hosts and Networks Tab
 
- ###Management Domain Networks
+| |Management Domain Networks| | || |
 |-----| ------ | ------ | ------ |------ |------ |
 |Network Type| VLAN# | Portgroup Name | CIDR Notation |Gateway|MTU|
 |Management Network| `< networkMgmt.vlan >` | SDDC-DPortGroup-Mgmt| `< networkMgmt.cidr >.0/24` | `< networkMgmt.cidr >.1` | `1500` |
@@ -468,7 +468,7 @@ Go to *Administration>Licenses>Add New Licenses*, enter license keys one per lin
 >Note: in vcf 4.3 network VxLAN is representing Overlay network for Hosts. Edge network is representing Overlay network for Edges.
 >Note: We will have to revisit this document after DHC 1.5 is released and all references changed to vCF 4.3.x
 
- ###Management Domain ESXI Hosts
+| Management Domain ESXI Hosts | | |  |
 | ------ | ------ | ------ |------ |
 | `< locationCode >mgt001` | `< locationCode >mgt002` |  `< locationCode >mgt003` | `< locationCode >mgt004` |
 | `< networkMgmt.cidr >.101`| `< networkMgmt.cidr >.102` | `< networkMgmt.cidr >.103` | `< networkMgmt.cidr >.104`|
