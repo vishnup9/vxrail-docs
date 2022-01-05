@@ -601,7 +601,7 @@ Go to *Administration>Licenses>Add New Licenses*, enter license keys one per lin
 ## VxRail initalization is automated using ansible role. 
 
 VxRail BringUp is automated, ansible role is created for creation of a .JSON file from J2 template and same *.JSON file is used for VxRail bringUp. JSON preparation process fetches the inputs from prerequisite VM *group vars/all* and performs VxRail initialization with values.
-The Cluster tabs: MGMT CLUSTER, VI 1 CLUSTER 1 and VI 1 CLUSTER 2 represent specific clusters and its logical configuration.
+The Cluster tabs: MGMT CLUSTER, VI CLUSTER 1 and VI CLUSTER 2 represent specific clusters and its logical configuration.
 While filling items within this tabs, certain sections may be grayed out or hidden, to indicate those items
 are mutually exclusive or invalid. In addition, some information entered will “cascade” from table to table,
 so it is important that information be entered in order.
@@ -619,9 +619,9 @@ The VxRail JSON File is generated using playbook.
 
 >**IMPORTANT: The inputs being fetched are fully consistant with inputs on prerequisite VM CloudBuilder**
   
-The VxRail initalization Ansible role.
+The VxRail Bringup Ansible role.
   
-   Playbook : createVxRailBringup.yml
+  Playbook : createVxRailBringup.yml
   Role : dhc-createVxRailBringup
   
  ![VxRailBringUp JSON](images/VxRailBringupPlaybooks.JPG)
