@@ -90,7 +90,7 @@ DHC domain name is equal to:  `< customerCode >dhc< dhcInstance >.next`, i.e. `n
 
 Following documents describes components that are not directly managed and created by DHC, and are required for correct build process.
 
-- [Network](../design/lldSoftwareDefinedNetworks.md#underlay-requirements-for-dhc-sdn)
+- [Network](https://github.com/rohitsiingh/vxrail-docs/blob/main/lldSoftwareDefinedNetworks.md)
 - [VSAN Witness](dhcVsanWitnessAppliance.md)
 
 ### Network Infrastructure
