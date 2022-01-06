@@ -119,7 +119,7 @@ The Prerequisite VM is generated with each DHC deployment.  The parameters below
 | vraCloudDefaultOrganization | CAS Atos | vRA Cloud Organization. The name will be used to generate authentication token|
 | vmwareUser  |   VMware service account  user name  |   VMware service account  user  name  used  for  bundles  downloading  and  other  VMware  integration  like  CAS  token. For Cloud Assembly token generation it is required that vRA Cloud user has Member and Support user roles assigned. VMware service account can be requested as described in “VMware service account” chapter in this document |
 | vmwareUserPassword  |   VMware service account user password  |   VMware service account password  used  for  bundles  downloading  and  other  VMware  integration  like  CAS  token |
-| dellUser  |   dl-dhc-vxrail@atos.net  |   Dell service account user name used for LCM activities |
+| dellUser  |   Dell Service account user name  |   Dell service account user name used for LCM activities |
 | dellUserPassword  |   Dell service account user password  |   Dell service account user password |
 | ntpServer1 | 10.99.94.144 | IP address of external to DHC NTP Server, provided by DC as described in DC Physical Requirements section of SDN LLD, this value is mandatory|
 | ntpServer2 | 10.99.94.145 | IP address of external to DHC NTP Server, provided by DC as described in DC Physical Requirements section of SDN LLD, if only one IP address was provided, leave this field empty |
@@ -129,7 +129,6 @@ The Prerequisite VM is generated with each DHC deployment.  The parameters below
 | externalProxyLogin  |   test  |   username  used  by  Parent  Proxy  for  authentication,  default  value  test  (Web  Proxy  for  Grenoble  Environment  is  not  requiring  authentication)notice:  please  be  aware  that  in  this  version  of  Code  Stream  all  variables  need  to  be  filled,  this  mean  even  if  "direct"  access  is  chosen  or  "none"  for  authentication  method  is  chosen,  this  variable  need  to  be  filled  with  random  value |
 | externalProxyPassword  |   test  |   password  used  by  Parent  Proxy  for  authentication,  default  value  test  (Web  Proxy  for  Grenoble  Environment  is  not  requiring  authentication)notice:  please  be  aware  that  in  this  version  of  Code  Stream  all  variables  need  to  be  filled,  this  mean  even  if  "direct"  access  is  chosen  or  "none"  for  authentication  method  is  chosen,  this  variable  need  to  be  filled  with  random  value |
 | externalProxyPort  |   8080  |   TCP  port  that  Parent  Proxy  for  DPC  Proxy  will  listen  for  web  traffic,  default  value  8080  (Web  Proxy  for  Grenoble  Environment  port)notice:  please  be  aware  that  in  this  version  of  Code  Stream  all  variables  need  to  be  filled,  this  mean  even  if  "direct"  access  is  chosen,  this  variable  need  to  be  filled  with  random  value |
-| networkDiscovery.vlan  |   2899  |   VXRAILDISCOVERY vLAN is used during VxRail bringup process and VxRail appliance uses this discovery vLAN |
 
 ### Licenses
 
@@ -225,6 +224,7 @@ Ensure at this stage that all parameters meet DHC design specification
 | VSAN network Gateway<br>*networkVsanGateway*  |   1  |  |
 | VSAN network Netmask<br>*networkVsanNetmask*  |   255.255.255.0  |  |
 | VSAN network Vlan<br>*networkVsanVlan*  |   2803  |  |
+| Discovery Vlan<br>*networkDiscoveryVlan	*  |   2899  |  |
 | Vxlan network<br>*networkVxlanCidr*  |   172.22.129  | VXLAN Network first three octets |
 | Vxlan network Gateway<br>*networkVxlanGw*  |   1  |  |
 | Vxlan network Vlan<br>*networkVxlanVlan*  |   2801  |  |
@@ -355,18 +355,15 @@ When all the required data have been gathered, the DHC deployment can be started
 
 ## DHC on DELL EMC VxRail (VCF on VxRail)
 
-> **Note: Standard DHC is using Vmware VCF, but is not based on VxRail VCF**
-
-DHC on VxRail deployment workflow has deviated from the standard DHC deployment process, the steps required for this scenario are described in the table below.
-
-The information in this section is written for experienced data center system administrators who are familiar with VMware virtualization technologies and additionally familiar with Dell EMC VxRail Manager.
+DHC on VxRail deployment workflow is different than the standard DHC deployment process, the steps required for DHC on VxRail scenario are described in the table below.
 
 | Step | Details |
 | ---- | ------- |
 | 1. Creating Prerequisite VM | covered in section 'Creating Prerequisite VM' MUST include VxRail related inputs as well |
 | 2. VxRail Manager Initialization | covered by [VxRailManagerInitialization.md](VxRailManagerInitialization.md) |
-| 3. Run Stage1 of dhc-builder playbook| ansible-playbook dhc-builder.yml --tags stage1|
-| 4. Run Stage 1 of dhc-builder playbook| ansible-playbook dhc-builder.yml --tags stage2|
+| 3. Run Stage0 of dhc-builder playbook| ansible-playbook dhc-builder.yml --tags stage0|
+| 4. Run Stage1 of dhc-builder playbook| ansible-playbook dhc-builder.yml --tags stage1|
+| 5. Run Stage1 of dhc-builder playbook| ansible-playbook dhc-builder.yml --tags stage2|
 
 ## Creating Prerequisite VM
 
@@ -412,17 +409,15 @@ VM creation takes up to 1h, the video has been cut to 20min to safe the time.
 
 ![Creating Prerequisite VM Video](images/DHC-Build-Guide/dhcCreatePrerequisiteVM-demo.mp4  "Creating Prerequisite VM Video")
 
-## Bring Up of vCF components with cloud builder (stage0)
-
-## Building non-vCF components (stage1, stage2)
+## Bring Up of vCF & non-vCF components with cloud builder (Stage0, Stage1, Stage2)
 
 After the vCF bring up is successfull, you have all the vcf components installed and preconfigured.
 
 Next is to execute installation and configuration of non VCF compontents. This is achieved from the prerequisite VM, which contains ansible and all the DHC code required for it.
 
->Important: Do not execute playbooks as `root` and do not execute playbooks via `sudo` as the scripts are going to fail. Playbooks must be executed as a non-priviledged user named `next`. You can check the current user issuing commands *whoami* and *id*. Initial `next` user password is static, is well known to deployment and development teams, search in their password managers databases.
+>Important: Do not execute playbooks as root and do not execute playbooks via sudo as the scripts are going to fail. Playbooks must be executed as a non-priviledged user named next. You can check the current user issuing commands whoami and id. Initial next user password is static, is well known to deployment and development teams, search in their password managers databases.
 
-Creation and configuration of all the non-vCF components are orchestrated via ansible playbooks stored in the */opt/dhc/deploy* directory.
+Creation and configuration of all the non-vCF components are orchestrated via ansible playbooks stored in the /opt/dhc/deploy directory.
 
 **Build steps:**
 
