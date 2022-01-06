@@ -55,13 +55,13 @@ The following resource repositories store ansible scripts (playbooks, and roles)
 -Open https://my.vmware.com/<br>
 -Select “Register”<br>
 -Enter xxx@atos.net account as the account’s email address<br>
-![](images/DHC-Build-Guide/vmwareaccount1.JPG) <br>
+![](images/DHC-Build-Guide/vmwareaccount1.png) <br>
 -Make sure to select VMware partner YES and Organization.<br>
-![](images/DHC-Build-Guide/vmwareaccount2.JPG) <br>
+![](images/DHC-Build-Guide/vmwareaccount2.png) <br>
 -Note down the password<br>
 -Click Sign-Up<br>
 3.	Wait for registration email message that will be sent to xxx@atos.net email account from donotreply@vmware.com.<br>
-![](images/DHC-Build-Guide/vmwareaccount3.JPG) <br>
+![](images/DHC-Build-Guide/vmwareaccount3.png) <br>
 -Use the link provided to activate the account.<br>
 4.	Contact contract-administration@atos.net and request new account to be assigned software download rights. <br>
 
