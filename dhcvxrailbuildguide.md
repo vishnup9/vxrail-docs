@@ -363,15 +363,9 @@ The information in this section is written for experienced data center system ad
 | Step | Details |
 | ---- | ------- |
 | 1. Creating Prerequisite VM | covered in section 'Creating Prerequisite VM' MUST include VxRail related inputs as well |
-| 2. VxRail First Run for the Management Cluster | covered by [VxRailManagerInitialization.md](VxRailManagerInitialization.md) now, Ansible role takes care of it |
-| 3. VCF on VxRail bringup|covered by [VxRailVcfBringUp.md](VxRailVcfBringUp.md) now, Ansible role takes care of it|
-| 4. Run Stage 1 of dpc-builder playbook| ansible-playbook dpc-builder.yml --tags stage1|
-| 5. Add Dell account for authentication | Log in to `https://sddcManagerFQDN`, go to Administration->Repository Settings and set 'Dell EMC Support Account Authentication'. Click 'Authenticate' button, provide Dell account name and password and click 'Authorize'. |
-| 6. Create VI VxRail Workload Domain | Before running stage 2 of dpc-builder playbook, VI VxRail Workload Domain has to be created. This step is covered in [VxRailVcfCreateWorkloadDomain.md](VxRailVcfCreateWorkloadDomain.md) now, Ansible role takes care of it|
-| 7. Run stage 2 of dpc-builder playbook skipping steps addVcfComputeHosts,createWorkloadDomain,addVcfDrMgmtHosts and addVcfDrCmpHosts| ansible-playbook dpc-builder.yml --tags stage2 --skip-tags addVcfComputeHosts,createWorkloadDomain,addVcfDrMgmtHosts,addVcfDrCmpHosts |
-| 8. Create MID server | covered later in this document |
-| 9. Remote board security hardening | covered later in this document |
-| 10. vSAN Encryption | Covered later in this document |
+| 2. VxRail Manager Initialization | covered by [VxRailManagerInitialization.md](VxRailManagerInitialization.md) |
+| 3. Run Stage1 of dhc-builder playbook| ansible-playbook dhc-builder.yml --tags stage1|
+| 4. Run Stage 1 of dpc-builder playbook| ansible-playbook dhc-builder.yml --tags stage2|
 
 ## Creating Prerequisite VM
 
