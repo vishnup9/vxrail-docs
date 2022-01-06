@@ -365,7 +365,7 @@ The information in this section is written for experienced data center system ad
 | 1. Creating Prerequisite VM | covered in section 'Creating Prerequisite VM' MUST include VxRail related inputs as well |
 | 2. VxRail Manager Initialization | covered by [VxRailManagerInitialization.md](VxRailManagerInitialization.md) |
 | 3. Run Stage1 of dhc-builder playbook| ansible-playbook dhc-builder.yml --tags stage1|
-| 4. Run Stage 1 of dpc-builder playbook| ansible-playbook dhc-builder.yml --tags stage2|
+| 4. Run Stage 1 of dhc-builder playbook| ansible-playbook dhc-builder.yml --tags stage2|
 
 ## Creating Prerequisite VM
 
