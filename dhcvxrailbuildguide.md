@@ -29,8 +29,6 @@ The following resource repositories store ansible scripts (playbooks, and roles)
 
 ![DHCbuildStepsOverview](images/DHC-Build-Guide/DHCbuildStepsOverview.png "DHCbuildStepsOverview")
 
-# DHC on VxRail build preparation
-
 1. Integration Architect gathers details of VxRail hardware, network, backup integration, antivirus integration, service now integration etc. Integration architect should also verify DC LAN design with NDCS (for supportability) and against DHC requirements (for compliance) at this stage.
 2. Integration Architect creates service account in Atos and VMware systems.
 3. Integration Architect executes creation of prerequisite VM task on VMware Console. The Prerequisite VM is required during the VxRail BringUp, SDDC Bring UP, vCF on VxRail BringUp as it provides initial DNS, DHCP, NTP services as well as orchestrates non-VCF components build up. 
