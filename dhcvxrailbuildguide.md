@@ -37,7 +37,8 @@ The following resource repositories store ansible scripts (playbooks, and roles)
 7. Verify VxRail nodes are racked, nodes powered ON. Cabling and network configuraiton done. Nodes should be accessible over iDRAC.
 8. Download VxRail 7.0.241 code from DellEMC.
 9. Upgrade the RASR image on the node using ISO, Install the Dell Upgrade Packages (DUPs) from SD and Factory Reset from SD.
-10. Run commands for VxRail manager initialization for management cluster. After this is done, proceed with Stage1 and Stage2 deployment.
+10. Run commands for VxRail manager initialization for management cluster.Kindly refer the document for more clarity.[VxRailManagerInitialization](https://github.com/rohitsiingh/vxrail-docs/blob/main/VxRailManagerInitialization.md)
+11. After above steps ae completed, proceed with Stage1 and Stage2 deployment.
 
 
 # VMware service account
