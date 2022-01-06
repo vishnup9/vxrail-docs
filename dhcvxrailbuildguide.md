@@ -25,7 +25,7 @@ The following resource repositories store ansible scripts (playbooks, and roles)
 
 
 
-# DHC on VxRail build process flow
+# DHC on VxRail build steps overview
 
 ![DHCbuildStepsOverview](images/DHC-Build-Guide/DHCbuildStepsOverview.png "DHCbuildStepsOverview")
 
@@ -40,27 +40,7 @@ The following resource repositories store ansible scripts (playbooks, and roles)
 7. Verify VxRail nodes are racked, nodes powered ON. Cabling and network configuraiton done. Nodes should be accessible over iDRAC.
 8. Download VxRail 7.0.241 code from DellEMC.
 9. Upgrade the RASR image on the node using ISO, Install the Dell Upgrade Packages (DUPs) from SD and Factory Reset from SD.
-10. Run playbook for VxRail manager initialization for management cluster.
-11. Run playbook to generate input json file for vxrail bringup.
-12. Run playbook for VxRail bring-up process.
-13. Run playbook to perform Pre-Vcf Bringup task(Rename Vcenter components, Create VSAN Policy, Create SDDC management portgroup).
-14. Run playbook for importing cloudbuilder vm on Vcenter.
-15. Run playbook to generate json input file for vcf on vxrail bringup.
-16. Run playbook to perform vcf on vxrail bringup.
-17. Run playbook for post vCF VxRail bring-up procedures
-18. DHC stage 1 deployment.
-19. Run playbook to generate input json file for creating workload domain.
-20. Run playbook for Workload domain creation in SDDC.
-21. Run playbook for VxRail manager initialization for workload domain.
-22. Run playbook to generate input json file for Vxrail Bringup for workload domain
-23. Run playbook for VxRail bringup for workload domain using above generated input file.
-24. Run playbook to perform post Vxrail bringup for workload domain task that is Renaming vcenter components(vsan, datacenter, cluster, dv switch), adding portgroups and adding vxadmin user.
-25. Runing playbook for getting esxi thumbprint and adding it into defaults/main.yml file for the playbook createVxRailClusterInWorkloadDomainBringupFile.yml.
-26. Run playbook to collect portgroup(management,vmotion,vsan) details for workload vcenter and add it in the j2 for playbook createVxRailClusterInWorkloadDomainBringupFile.yml
-27. Run playbook to generate the json file for adding VxRail cluster to workload domain 
-28. Run playbook for adding VxRail cluster to workload domain in SDDC.
-29. Run DHC stage 2 installation.
-
+10. Run commands for VxRail manager initialization for management cluster.
 
 
 # VMware service account
