@@ -224,7 +224,7 @@ Ensure at this stage that all parameters meet DHC design specification
 | VSAN network Gateway<br>*networkVsanGateway*  |   1  |  |
 | VSAN network Netmask<br>*networkVsanNetmask*  |   255.255.255.0  |  |
 | VSAN network Vlan<br>*networkVsanVlan*  |   2803  |  |
-| Discovery Vlan<br>*networkDiscoveryVlan	*  |   2899  |  |
+| Discovery Vlan<br>*networkDiscoveryVlan*  |   2899  |  |
 | Vxlan network<br>*networkVxlanCidr*  |   172.22.129  | VXLAN Network first three octets |
 | Vxlan network Gateway<br>*networkVxlanGw*  |   1  |  |
 | Vxlan network Vlan<br>*networkVxlanVlan*  |   2801  |  |
