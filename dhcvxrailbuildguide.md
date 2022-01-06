@@ -361,9 +361,7 @@ DHC on VxRail deployment workflow is different than the standard DHC deployment 
 | ---- | ------- |
 | 1. Creating Prerequisite VM | covered in section 'Creating Prerequisite VM' MUST include VxRail related inputs as well |
 | 2. VxRail Manager Initialization | covered by [VxRailManagerInitialization.md](VxRailManagerInitialization.md) |
-| 3. Run Stage0 of dhc-builder playbook| ansible-playbook dhc-builder.yml --tags stage0|
-| 4. Run Stage1 of dhc-builder playbook| ansible-playbook dhc-builder.yml --tags stage1|
-| 5. Run Stage1 of dhc-builder playbook| ansible-playbook dhc-builder.yml --tags stage2|
+| 3. Run dhc-vxrailbuilder playbook| ansible-playbook dhc-vxrailbuilder.yml
 
 ## Creating Prerequisite VM
 
