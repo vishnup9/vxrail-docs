@@ -224,7 +224,7 @@ Ensure at this stage that all parameters meet DHC design specification
 | VSAN network Gateway<br>*networkVsanGateway*  |   1  |  |
 | VSAN network Netmask<br>*networkVsanNetmask*  |   255.255.255.0  |  |
 | VSAN network Vlan<br>*networkVsanVlan*  |   2803  |  |
-| Discovery Vlan<br>*networkDiscoveryVlan*  |   2899  |  |
+| Discovery Vlan<br>*networkDiscoveryVlan*  |   2899  | VxRail Network Discovery Vlan |
 | Vxlan network<br>*networkVxlanCidr*  |   172.22.129  | VXLAN Network first three octets |
 | Vxlan network Gateway<br>*networkVxlanGw*  |   1  |  |
 | Vxlan network Vlan<br>*networkVxlanVlan*  |   2801  |  |
@@ -411,13 +411,9 @@ VM creation takes up to 1h, the video has been cut to 20min to safe the time.
 
 ## Bring Up of vCF & non-vCF components with cloud builder (Stage0, Stage1, Stage2)
 
-After the vCF bring up is successfull, you have all the vcf components installed and preconfigured.
-
-Next is to execute installation and configuration of non VCF compontents. This is achieved from the prerequisite VM, which contains ansible and all the DHC code required for it.
-
 >Important: Do not execute playbooks as root and do not execute playbooks via sudo as the scripts are going to fail. Playbooks must be executed as a non-priviledged user named next. You can check the current user issuing commands whoami and id. Initial next user password is static, is well known to deployment and development teams, search in their password managers databases.
 
-Creation and configuration of all the non-vCF components are orchestrated via ansible playbooks stored in the /opt/dhc/deploy directory.
+Creation and configuration of all the vCF and non-vCF components are orchestrated via ansible playbooks stored in the /opt/dhc/deploy directory.
 
 **Build steps:**
 
