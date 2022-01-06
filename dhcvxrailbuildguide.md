@@ -118,6 +118,8 @@ The Prerequisite VM is generated with each DHC deployment.  The parameters below
 | vraCloudDefaultOrganization | CAS Atos | vRA Cloud Organization. The name will be used to generate authentication token|
 | vmwareUser  |   VMware service account  user name  |   VMware service account  user  name  used  for  bundles  downloading  and  other  VMware  integration  like  CAS  token. For Cloud Assembly token generation it is required that vRA Cloud user has Member and Support user roles assigned. VMware service account can be requested as described in “VMware service account” chapter in this document |
 | vmwareUserPassword  |   VMware service account user password  |   VMware service account password  used  for  bundles  downloading  and  other  VMware  integration  like  CAS  token |
+| dellUser  |   dl-dhc-vxrail@atos.net  |   Dell service account user name used for LCM activities |
+| dellUserPassword  |   Dell service account user password  |   Dell service account user password |
 | ntpServer1 | 10.99.94.144 | IP address of external to DHC NTP Server, provided by DC as described in DC Physical Requirements section of SDN LLD, this value is mandatory|
 | ntpServer2 | 10.99.94.145 | IP address of external to DHC NTP Server, provided by DC as described in DC Physical Requirements section of SDN LLD, if only one IP address was provided, leave this field empty |
 | InternetAccess  |   proxy  |   [direct/proxy] Access to internet from DHC. <BR> proxy  -  (default)  -  proxy  value  indicates  that  DPC  Web-Proxy  will  use  another  Proxy  as  parent  proxy  to  forward  traffic,  proxy  will  be  configured  under  /etc/squid/squid.conf  cache_peer  section <BR> direct  -  value  indicates  that  DPC  Web-Proxy  will  have  direct  access  to  the  Internet,  no  parent  proxy  will  be  configured  on  DPC  Proxy  under  /etc/squid/squid.conf |
@@ -127,8 +129,6 @@ The Prerequisite VM is generated with each DHC deployment.  The parameters below
 | externalProxyPassword  |   test  |   password  used  by  Parent  Proxy  for  authentication,  default  value  test  (Web  Proxy  for  Grenoble  Environment  is  not  requiring  authentication)notice:  please  be  aware  that  in  this  version  of  Code  Stream  all  variables  need  to  be  filled,  this  mean  even  if  "direct"  access  is  chosen  or  "none"  for  authentication  method  is  chosen,  this  variable  need  to  be  filled  with  random  value |
 | externalProxyPort  |   8080  |   TCP  port  that  Parent  Proxy  for  DPC  Proxy  will  listen  for  web  traffic,  default  value  8080  (Web  Proxy  for  Grenoble  Environment  port)notice:  please  be  aware  that  in  this  version  of  Code  Stream  all  variables  need  to  be  filled,  this  mean  even  if  "direct"  access  is  chosen,  this  variable  need  to  be  filled  with  random  value |
 | networkDiscovery.vlan  |   2899  |   VXRAILDISCOVERY vLAN is used during VxRail bringup process and VxRail appliance uses this discovery vLAN |
-| dellUser  |   dl-dhc-vxrail@atos.net  |   Dell service account user name used for LCM activities |
-| dellUserPassword  |   Dell service account user password  |   Dell service account user password |
 
 ### Licenses
 
@@ -331,8 +331,7 @@ Integration with Atos Shared Compliancy Services
 
 It is highly recommended to read VMware Cloud Foundation Release Notes to understand fundamentals.
 
-1. [vCF 4.3 Release Notes](https://docs.vmware.com/en/VMware-Cloud-Foundation/4.3/rn/VMware-Cloud-Foundation-43-Release-Notes.html#swversions)
-2. [vCF 4.3 on VxRail Release Notes](https://docs.vmware.com/en/VMware-Cloud-Foundation/4.3.1/rn/vmware-cloud-foundation-431-on-dell-emc-vxrail-release-notes.html)
+1. [vCF 4.3.1 on VxRail Release Notes](https://docs.vmware.com/en/VMware-Cloud-Foundation/4.3.1/rn/vmware-cloud-foundation-431-on-dell-emc-vxrail-release-notes.html)
 
 ## List of vCF Download Bundle IDs
 
