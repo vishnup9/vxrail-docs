@@ -413,59 +413,6 @@ VM creation takes up to 1h, the video has been cut to 20min to safe the time.
 
 ## Bring Up of vCF components with cloud builder (stage0)
 
->Note: To rebuild [DHC LAB environments](https://msdevopsconfluence.fsc.atos-services.net/display/DPC/DHC+LAB+environments) complete the refreshing procedure first.
-This is located here: [DPC.Next ESXi refreshing](https://msdevopsconfluence.fsc.atos-services.net/display/DPC/DPC.Next+ESXi+refreshing).
-
-Next step is to __IMPORT the proper version of cloud builder from OVA on to the PrerequisiteVM bineries location__
-
-  
-Start cloud builder, deployment using ansible playbook. Execute vCF bring-up ansible playbook.
-The prerequisite VM must be powered on and serving all required services.
-
->Note: Inputs provided in PrerequisiteVM are being used by ansible playbooks for VxRail and  VCF bring-up and hence, it MUST be in line with those entered in the prerequisite VM build form. Refer to inputs paragragh for the quidenances. Vlidate with parameters in */opt/dhc/deploy/group_vars/all* file on the prerequisite VM, that will be used by ansible playbooks in the deploy phase.
-
-DHC relies on vCF ready hardware. The requirements are:
-
-| ID | Check point |
-| --- | --- |
-| |All hardware is vSAN compliant and certified on the VMware Hardware Compatibility Guide. |
-| |Identical hardware (CPU, Memory, NICs, SSD/HDD, etc.) within the management cluster is highly recommended. |
-| |Physical hardware health status is 'healthy' without any errors. |
-| |Hardware and firmware (including HBA and BIOS) is configured for vSAN. |
-| |ESXi is freshly installed on each host. The ESXi version matches the build listed in the Cloud Foundation Build of Materials. |
-| |TSM-SSH service is running on each ESXi host with the policy configured to 'Start and stop with host's. |
-| |All hosts are configured and in synchronization with a central time server (NTP). NTP service policy set to 'Start and stop with host'. NTP settings matches [lldInfrastructure](../design/lldInfrastructure.md)|
-| |All hosts are configured with a DNS server for name resolution. Management IP of hosts is registered and queryable as both a forward (hostname-to-IP), and reverse (IP-to-Hostname) entry. |
-| |Top of Rack switches are configured. Each host and NIC in the management domain must have the same network configuration. No ethernet trunking technology (LAG/VPC/LACP) is being used. |
-| |VLANs for management, vMotion, NSX, VTP, and vSAN are created and tagged to all host ports. Each VLAN is 802.1q tagged. |
-| |Jumbo Frames (MTU 9000) are recommended on all VLANs. At a minimum, MTU of 1600 is required on the NSX VTP VLAN end to end through your environment. |
-| |IP ranges, subnet mask, and a reliable L3 (default) gateway for each VLAN are provided. |
-| |Management IP is VLAN backed and configured on the host. vMotion & vSAN IP ranges are configured during the bring-up process. |
-| |One physical NIC is configured and connected to the vSphere Standard switch. The second physical NIC is not configured. |
-| |DHCP with an appropriate scope size (one IP per physical NIC per host) is configured for the 'VTEP' VLAN. |
-| |The default port group 'VM Network' is configured with the same VLAN ID as the 'management network'. |
-| |Each ESXi host is running a non-expired license - initial evaluation license is accepted. The bring-up process will configure the permanent license provided. |
-
-### Prebuild tests for Bring Up
-
->**Note:** This step is optional and can be skipped, but this is strongly recommended to execute prebuild tests in order to make sure that all prererequisites and requirements are met properly.
-
-Due to a significant amount of effort needed to meet all VCF requirements and prepare all layers to be ready for deployment, there is a few tests that can be executed to verify that these requirements are met - both hardware and software layers which are crucial and should be well prepared to start DHC deployment.
-
-Please use [DHC Prebuild Validation Test](files/dhcBuildGuide/dhcPrebuildValidationTests.xlsx) template to execute checks.
-
-The prebuild validation includes:
-
-1. Validate BGP on Management network is working and established (Networking)
-2. Validate BGP on Customer network is working and established (Networking)
-3. Validate Internet Access is working  (Networking)
-4. Management ESXi are configured to met vCF requirements and vCF on VxRail requirements (Infrastructure)
-5. Workload ESXi are configured to met vCF requirements and vCF on VxRail requirements (Infrastructure)
-6. Validate connectivity from both datacenters (sites) to Management and Compute Witness host and credentials (Infrastructure) - applicable for A/A DR
-7. VCF Prechecks from CloudBuilder (VCF) is being done by Ansible role which validates the inputs before bringup process.
-
-You can use the results as a final "GO" decision for deployment start.
-
 ## Building non-vCF components (stage1, stage2)
 
 After the vCF bring up is successfull, you have all the vcf components installed and preconfigured.
