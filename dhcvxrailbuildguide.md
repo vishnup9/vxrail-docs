@@ -426,44 +426,44 @@ cd /opt/dpc/deploy
 *2. Run DPC Next Master Build playbook:*
 
 ```shell
-ansible-playbook dpc-builder.yml
+ansible-playbook dhc-vxrailbuilder.yml
 ```
 
-Note: There are **tags** defined in __dpc-builder.yml__. You may find it useful.
+Note: There are **tags** defined in __dhc-vxrailbuilde.yml__. You may find it useful.
 
 Example usage:
 
 Run __stage1__ pipeline
 
 ```shell
-ansible-playbook dpc-builder.yml --tags stage1
+ansible-playbook dhc-vxrailbuilde.yml --tags stage1
 ```
 
 Run __stage1__ playbooks, skip first 3:
 
 ```shell
-ansible-playbook dpc-builder.yml --tags stage1 --skip-tags 1-1,1-2,1-3
+ansible-playbook dhc-vxrailbuilde.yml --tags stage1 --skip-tags 1-1,1-2,1-3
 ```
 
 Run single playbook, i.e first one:
 
 ```shell
-ansible-playbook dpc-builder.yml --tags 1-0
+ansible-playbook dhc-vxrailbuilde.yml --tags 1-0
 ```
 
 Run Bastion Hosts creation and configuration playbook:
 
 ```shell
-ansible-playbook dpc-builder.yml --tags bastionHost
+ansible-playbook dhc-vxrailbuilde.yml --tags bastionHost
 ```
 
 Run stage1 and stage2 without Cloud Assembly integration part:
 
 ```shell
-ansible-playbook dpc-builder.yml --tags stage1,stage2 --skip-tags cloudAssembly
+ansible-playbook dhc-vxrailbuilde.yml --tags stage1,stage2 --skip-tags cloudAssembly
 ```
 
-Review dpc-builder.yml playbook to understand DHC build order and read tags names reffing to the tasks
+Review dhc-vxrailbuilde.yml playbook to understand DHC build order and read tags names reffing to the tasks
 
 ```yaml
 ---
