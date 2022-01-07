@@ -72,14 +72,14 @@ Create a DellEMC support service account requried for VxRail LCM.
 
 1. Open https://support.emc.com/ which will redirect to dell.com for SSO authentication or new account creation
 ![](images/dell-account/createacc.PNG) <br>
-2. Provide First Name, Last name and emial address- xxx@atos.net that will be used for registration<br>
+2. Provide First Name, Last name and email address- xxx@atos.net that will be used for registration<br>
 3. Enter password for the account and note it down, this password will be requried later during DHC deployment as input.
 4. Click on "Create Account"
    You will receive an email with OTP for account creation.
 ![](images/dell-account/emailotp.PNG) <br>
 5.Enter OTP received on email to validate account.
 ![](images/dell-account/otp2.PNG) <br>
-6.	At this ste- account will be created and you will be redirected to finish the regiration-
+6.	At this site- account will be created and you will be redirected to finish the regiration-
 ![](images/dell-account/acconf23.PNG) <br>
 7. Select appropritate category for account-
 ![](images/dell-account/activation2.PNG) <br>
@@ -87,7 +87,7 @@ Create a DellEMC support service account requried for VxRail LCM.
 ![](images/dell-account/bissacc3.PNG) <br>
 9. Select Company the account belongs to-
 ![](images/dell-account/org.PNG) <br>
-10. Confirm organization selectiona dn click on submit-
+10. Confirm organization selection and click on submit-
 ![](images/dell-account/orgconf.PNG) <br>
 11. Now you will be redirected to Welcome page in support portal-
 ![](images/dell-account/welcome.PNG) <br>
