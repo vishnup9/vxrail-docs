@@ -68,14 +68,18 @@ The following resource repositories store ansible scripts (playbooks, and roles)
 
 # DELL EMC service account
 
-1.	Create a Dell account and use the same account name and email used for VMware service account:<br>
--Open https://www.dell.com/Identity/global/LoginOrRegister/ <br>
--Enter xxx@atos.net account as the account’s email address<br>
-2.	Login using account created in step 1 .<br>
+1.	Create a DellEMC support service account requried for VxRail LCM.
+-Open https://support.emc.com/ which will redirect to dell.com for SSO authentication or new account creation
+![](images/dell-account/createacc.PNG) <br>
+-Provide First Name, Last name and emial address- xxx@atos.net that will be used for registration<br>
+-Enter password for the account and note it down, this password will be requried later during DHC deployment as input.
+- Click on "Create Account"
+2.	You will receive an email with OTP for account creation.
+3.	
+4.	Login using account created in step 1 .<br>
 ![](images/dellLogin.JPG) <br>
-4.	Access vxrail link for planning guide, deployment overview and more resources. Note: This step is just for information as VxRail bringup is automated in DHC using Ansible.
-- Open https://vxrailch.dellemc.com/home. <br>
-![](images/dellVxRailResources.JPG) <br>
+
+
 
 
 ## Naming Convention
